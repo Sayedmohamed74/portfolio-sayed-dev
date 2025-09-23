@@ -1,26 +1,48 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+   --color-primary: #121212;
+  --color-secondary: #1e293b;
+  --color-tertiary: #00e5ff;
+  --color-textPrimary: #F8F9FA;
+  --color-textSecondary: #9ca3af;
+  --color-textTertiary: #1c4f55;
+  --color-header: #121212;
+  --spacing-header: 70px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  
+  font-family:var(--font-lato), sans-serif;
+}
+@layer components {
+  .btn-glass {
+    @apply relative px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 
+  rounded-xl font-semibold text-white 
+  border border-[#00E5FF]/40 bg-white/10 backdrop-blur-md 
+  shadow-[0_0_10px_rgba(0,229,255,0.3)] 
+  hover:shadow-[0_0_20px_rgba(0,229,255,0.6)] 
+  hover:bg-[#00E5FF]/20 
+  transition-all duration-500 ease-in-out;
+  }
+
+  .btn-gradient {
+    @apply px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 
+  rounded-xl font-semibold text-white 
+  bg-gradient-to-r from-[#00E5FF] to-[#3B82F6] 
+  hover:from-[#3B82F6] hover:to-[#00E5FF] 
+  shadow-lg shadow-[#00E5FF]/30 
+  transition-all duration-500 ease-in-out;
+  }
+
+  .btn-neon {
+    @apply relative px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 
+  rounded-xl font-semibold text-white 
+  bg-[#121212] border border-[#00E5FF] 
+  shadow-[0_0_10px_rgba(0,229,255,0.5)] 
+  hover:shadow-[0_0_25px_rgba(0,229,255,0.9)] 
+  hover:scale-105 
+  transition-all duration-500 ease-in-out;
+  }
 }

@@ -1,0 +1,91 @@
+{
+  "id": "skills",
+  "type": "SharedSlice",
+  "name": "Skills",
+  "description": "Skills",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "frontend_skills": {
+          "type": "Group",
+          "config": {
+            "label": "frontend skills ",
+            "repeat": true,
+            "fields": {
+              "title": {
+                "type": "Text",
+                "config": {
+                  "label": "title",
+                  "placeholder": ""
+                }
+              },
+              "image_skill": {
+                "type": "Image",
+                "config": {
+                  "label": "image Skill",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              }
+            }
+          }
+        },
+        "styling_ui": {
+          "type": "Group",
+          "config": {
+            "label": "Styling UI",
+            "repeat": true,
+            "fields": {
+              "title": {
+                "type": "Text",
+                "config": {
+                  "label": "title",
+                  "placeholder": ""
+                }
+              },
+              "image_skill": {
+                "type": "Image",
+                "config": {
+                  "label": "image Skill",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              }
+            }
+          }
+        },
+        "tools_workflow": {
+          "type": "Group",
+          "config": {
+            "label": "Tools Workflow",
+            "repeat": true,
+            "fields": {
+              "title": {
+                "type": "Text",
+                "config": {
+                  "label": "title",
+                  "placeholder": ""
+                }
+              },
+              "image_skill": {
+                "type": "Image",
+                "config": {
+                  "label": "image Skill",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

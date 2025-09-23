@@ -1,0 +1,33 @@
+{
+  "format": "custom",
+  "id": "header",
+  "label": "Header",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "buttons_nav": {
+        "type": "Link",
+        "config": {
+          "label": "Buttons nav",
+          "placeholder": "Buttons nav",
+          "select": null,
+          "allowTargetBlank": false,
+          "allowText": true,
+          "repeat": true
+        }
+      },
+      "logo": {
+        "type": "Image",
+        "config": {
+          "label": "logo",
+          "constraint": {
+            "width": 120,
+            "height": 40
+          },
+          "thumbnails": []
+        }
+      }
+    }
+  }
+}

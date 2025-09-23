@@ -1,0 +1,88 @@
+{
+  "id": "hero",
+  "type": "SharedSlice",
+  "name": "Hero",
+  "description": "Hero",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "image_hero": {
+          "type": "Image",
+          "config": {
+            "label": "image hero",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "intro_text": {
+          "type": "Text",
+          "config": {
+            "label": "intro text",
+            "placeholder": "intro text"
+          }
+        },
+        "name": {
+          "type": "Text",
+          "config": {
+            "label": "name",
+            "placeholder": "name"
+          }
+        },
+        "role": {
+          "type": "Text",
+          "config": {
+            "label": "role",
+            "placeholder": "role"
+          }
+        },
+        "cv_file": {
+          "type": "Link",
+          "config": {
+            "label": "cv file",
+            "placeholder": "cv file",
+            "select": "media",
+            "allowText": true
+          }
+        },
+        "social_links": {
+          "type": "Group",
+          "config": {
+            "label": "social links",
+            "repeat": true,
+            "fields": {
+              "link_social": {
+                "type": "Link",
+                "config": {
+                  "label": "link social",
+                  "placeholder": "link social",
+                  "select": null,
+                  "allowTargetBlank": true,
+                  "allowText": true,
+                  "repeat": false
+                }
+              },
+              "icon_social": {
+                "type": "Image",
+                "config": {
+                  "label": "icon social",
+                  "constraint": {
+                    "width": 24,
+                    "height": 24
+                  },
+                  "thumbnails": []
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

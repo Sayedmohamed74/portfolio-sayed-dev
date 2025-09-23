@@ -1,0 +1,26 @@
+{
+  "id": "sayed",
+  "type": "SharedSlice",
+  "name": "Sayed",
+  "description": "Sayed",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "dfds": {
+          "type": "Text",
+          "config": {
+            "label": "dfds",
+            "placeholder": "sdfsdfds"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

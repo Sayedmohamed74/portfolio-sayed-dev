@@ -1,0 +1,14 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"dfds": {
+				"__TYPE__": "FieldContent",
+				"value": "outline",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]
