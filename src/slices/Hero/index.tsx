@@ -3,6 +3,7 @@ import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import Container from "@/components/Container";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
+import Image from "./Image";
 
 /**
  * Props for `Hero`.
@@ -18,6 +19,7 @@ const Hero: FC<HeroProps> = ({ slice }) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
+       id={data.section_id||''}
       className="mt-header   bg-primary"
     >
       <Container className="flex items-center justify-between py-20 h-full max-md:flex-col max-md:gap-10 ">
@@ -47,13 +49,7 @@ const Hero: FC<HeroProps> = ({ slice }) => {
           </ul>
         </div>
 
-        <div className=" max-md:max-w-4/5 md:max-w-[500px]  xl:max-w-[600px] aspect-square rounded-3xl overflow-hidden shadow-2xl shadow-black/30 border-4 border-white/10 bg-white/5 backdrop-blur-sm">
-          <PrismicNextImage
-            field={data.image_hero}
-            alt=""
-            className="w-full h-full object-cover"
-          />
-        </div>
+        <Image field={data.image_hero}/>
       </Container>
      
     </section>

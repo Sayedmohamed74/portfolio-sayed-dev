@@ -83,6 +83,13 @@
               }
             }
           }
+        },
+        "section_id": {
+          "type": "Text",
+          "config": {
+            "label": "section id",
+            "placeholder": ""
+          }
         }
       },
       "items": {}

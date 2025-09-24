@@ -182,6 +182,61 @@ export type PageDocument<Lang extends string = string> =
 export type AllDocumentTypes = HeaderDocument | PageDocument;
 
 /**
+ * Primary content in *About → Default → Primary*
+ */
+export interface AboutSliceDefaultPrimary {
+  /**
+   * image about field in *About → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.default.primary.image_about
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image_about: prismic.ImageField<never>;
+
+  /**
+   * description field in *About → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  description: prismic.KeyTextField;
+
+  /**
+   * title field in *About → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * image bg field in *About → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.default.primary.image_bg
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image_bg: prismic.ImageField<never>;
+
+  /**
+   * section id field in *About → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.default.primary.section_id
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  section_id: prismic.KeyTextField;
+}
+
+/**
  * Default variation for About Slice
  *
  * - **API ID**: `default`
@@ -190,7 +245,7 @@ export type AllDocumentTypes = HeaderDocument | PageDocument;
  */
 export type AboutSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Record<string, never>,
+  Simplify<AboutSliceDefaultPrimary>,
   never
 >;
 
@@ -304,6 +359,16 @@ export interface HeroSliceDefaultPrimary {
   social_links: prismic.GroupField<
     Simplify<HeroSliceDefaultPrimarySocialLinksItem>
   >;
+
+  /**
+   * section id field in *Hero → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.section_id
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  section_id: prismic.KeyTextField;
 }
 
 /**
@@ -334,6 +399,78 @@ type HeroSliceVariation = HeroSliceDefault;
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 
 /**
+ * Item in *Portfolio → Default → Primary → projects cards*
+ */
+export interface PortfolioSliceDefaultPrimaryProjectsCardsItem {
+  /**
+   * project image field in *Portfolio → Default → Primary → projects cards*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: portfolio.default.primary.projects_cards[].project_image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  project_image: prismic.ImageField<never>;
+
+  /**
+   * description field in *Portfolio → Default → Primary → projects cards*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: portfolio.default.primary.projects_cards[].description
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  description: prismic.KeyTextField;
+
+  /**
+   * tools field in *Portfolio → Default → Primary → projects cards*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: portfolio.default.primary.projects_cards[].tools
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  tools: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *Portfolio → Default → Primary*
+ */
+export interface PortfolioSliceDefaultPrimary {
+  /**
+   * title field in *Portfolio → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: portfolio.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * projects cards field in *Portfolio → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: portfolio.default.primary.projects_cards[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  projects_cards: prismic.GroupField<
+    Simplify<PortfolioSliceDefaultPrimaryProjectsCardsItem>
+  >;
+
+  /**
+   * section id field in *Portfolio → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: portfolio.default.primary.section_id
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  section_id: prismic.KeyTextField;
+}
+
+/**
  * Default variation for Portfolio Slice
  *
  * - **API ID**: `default`
@@ -342,7 +479,7 @@ export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
  */
 export type PortfolioSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Record<string, never>,
+  Simplify<PortfolioSliceDefaultPrimary>,
   never
 >;
 
@@ -519,6 +656,16 @@ export interface SkillsSliceDefaultPrimary {
   tools_workflow: prismic.GroupField<
     Simplify<SkillsSliceDefaultPrimaryToolsWorkflowItem>
   >;
+
+  /**
+   * section id field in *Skills → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: skills.default.primary.section_id
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  section_id: prismic.KeyTextField;
 }
 
 /**
@@ -576,6 +723,7 @@ declare module "@prismicio/client" {
       PageDocumentDataSlicesSlice,
       AllDocumentTypes,
       AboutSlice,
+      AboutSliceDefaultPrimary,
       AboutSliceVariation,
       AboutSliceDefault,
       HeroSlice,
@@ -584,6 +732,8 @@ declare module "@prismicio/client" {
       HeroSliceVariation,
       HeroSliceDefault,
       PortfolioSlice,
+      PortfolioSliceDefaultPrimaryProjectsCardsItem,
+      PortfolioSliceDefaultPrimary,
       PortfolioSliceVariation,
       PortfolioSliceDefault,
       SayedSlice,

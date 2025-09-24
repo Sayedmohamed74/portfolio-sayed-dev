@@ -1,20 +1,20 @@
 @import "tailwindcss";
-
+html{
+  scroll-behavior: smooth;
+}
 @theme {
-   --color-primary: #121212;
+  --color-primary: #121212;
   --color-secondary: #1e293b;
-  --color-tertiary: #00e5ff;
-  --color-textPrimary: #F8F9FA;
+  --color-tertiary: #25727b;
+  --color-textPrimary: #f8f9fa;
   --color-textSecondary: #9ca3af;
   --color-textTertiary: #1c4f55;
   --color-header: #121212;
   --spacing-header: 70px;
 }
 
-
 body {
-  
-  font-family:var(--font-lato), sans-serif;
+  font-family: var(--font-lato), sans-serif;
 }
 @layer components {
   .btn-glass {

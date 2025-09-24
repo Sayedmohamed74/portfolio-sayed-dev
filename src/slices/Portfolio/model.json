@@ -10,7 +10,57 @@
       "docURL": "...",
       "version": "initial",
       "description": "Default",
-      "imageUrl": ""
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "title",
+            "placeholder": ""
+          }
+        },
+        "projects_cards": {
+          "type": "Group",
+          "config": {
+            "label": "projects cards",
+            "repeat": true,
+            "fields": {
+              "project_image": {
+                "type": "Image",
+                "config": {
+                  "label": "project image",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "description": {
+                "type": "Text",
+                "config": {
+                  "label": "description",
+                  "placeholder": ""
+                }
+              },
+              "tools": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "tools",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+                }
+              }
+            }
+          }
+        },
+        "section_id": {
+          "type": "Text",
+          "config": {
+            "label": "section id",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
     }
   ]
 }
