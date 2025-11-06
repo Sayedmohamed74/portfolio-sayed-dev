@@ -1,57 +1,103 @@
+"use client";
+
 import { FC } from "react";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import Container from "@/components/Container";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import Image from "./Image";
+import { motion } from "framer-motion";
 
-/**
- * Props for `Hero`.
- */
 export type HeroProps = SliceComponentProps<Content.HeroSlice>;
 
-/**
- * Component for "Hero" Slices.
- */
 const Hero: FC<HeroProps> = ({ slice }) => {
   const data = slice.primary;
+
   return (
     <section
+      id={data.section_id || ""}
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-       id={data.section_id||''}
-      className="mt-header   bg-primary"
+      className="relative isolate mt-header overflow-hidden bg-primary"
     >
-      <Container className="flex items-center justify-between py-20 h-full max-md:flex-col max-md:gap-10 ">
-        <div className=" max-md:self-baseline">
-          <small className="text-base lg:text-lg xl:text-xl font-semibold text-textTertiary ">
+      {/* Animated background glow */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-secondary)]/60 via-[var(--color-primary)] to-transparent" />
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[var(--color-tertiary)]/10 blur-[180px] rounded-full pointer-events-none" />
+
+      <Container className="relative z-10 flex items-center justify-between py-24 lg:py-32 max-lg:flex-col max-lg:text-center max-lg:gap-16">
+        {/* === LEFT TEXT AREA === */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="flex-1"
+        >
+          <p className="text-textTertiary text-lg sm:text-xl tracking-wide uppercase font-semibold">
             {data.intro_text}
-          </small>
-          <p className="text-textSecondary  mt-3 md:mt-5 lg:mt-8 font-semibold text-3xl lg:text-5xl">
-            {data.name}
           </p>
-          <h1 className="text-textPrimary mt-4 md:mt-6 lg:mt-10 font-bold text-4xl lg:text-5xl">
-            {data.role}
+
+          <h1 className="mt-3 text-5xl sm:text-6xl lg:text-7xl font-orbitron font-extrabold text-textPrimary leading-tight">
+            {data.name}
           </h1>
 
-          <ul className="my-10 flex gap-2.5 flex-wrap ">
-            {!!data.social_links &&
-              data.social_links?.map((link) => (
-                <li
-                  key={link.icon_social.id}
-                  className="w-12 aspect-square rounded-full bg-secondary  flex items-center justify-center hover:bg-tertiary hover:scale-110 transition-all duration-300"
-                >
-                  <PrismicNextLink className=" block" field={link.link_social}>
-                    <PrismicNextImage field={link.icon_social} alt="" />
-                  </PrismicNextLink>
-                </li>
-              ))}
-          </ul>
-        </div>
+          <h2 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-semibold text-textSecondary">
+            {data.role}
+          </h2>
 
-        <Image field={data.image_hero}/>
+          {/* CTA Buttons */}
+         {/*  <div className="mt-10 flex max-lg:justify-center gap-4 flex-wrap">
+            {data.cta_text && (
+              <PrismicNextLink field={data.cta_link} className="btn-gradient">
+                {data.cta_text}
+              </PrismicNextLink>
+            )}
+            {data.secondary_cta_text && (
+              <PrismicNextLink
+                field={data.secondary_cta_link}
+                className="btn-glass"
+              >
+                {data.secondary_cta_text}
+              </PrismicNextLink>
+            )}
+          </div>
+ */}
+          {/* Social Links */}
+          <ul className="mt-10 flex flex-wrap max-lg:justify-center gap-3">
+            {data.social_links?.map((link, i) => (
+              <motion.li
+                key={link.icon_social.id || i}
+                whileHover={{ scale: 1.2, rotate: 5 }}
+                whileTap={{ scale: 0.9 }}
+                transition={{ type: "spring", stiffness: 300 }}
+                className="w-12 h-12 rounded-full bg-[var(--color-secondary)]/80 border border-[var(--color-textTertiary)]/20 flex items-center justify-center hover:shadow-[0_0_20px_var(--color-textTertiary)] backdrop-blur-sm transition-all duration-300"
+              >
+                <PrismicNextLink field={link.link_social}>
+                  <PrismicNextImage
+                    field={link.icon_social}
+                    alt=""
+                    className="w-6 h-6 object-contain"
+                  />
+                </PrismicNextLink>
+              </motion.li>
+            ))}
+          </ul>
+        </motion.div>
+
+        {/* === RIGHT IMAGE AREA === */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1 }}
+          className="relative flex-1 max-w-md lg:max-w-lg xl:max-w-xl mx-auto"
+        >
+          <div className="relative rounded-[2rem] overflow-hidden shadow-[0_0_50px_rgba(0,229,255,0.2)] hover:shadow-[0_0_80px_rgba(0,229,255,0.35)] transition-all duration-700">
+            <Image field={data.image_hero} />
+          </div>
+
+          {/* Decorative glow behind image */}
+          <div className="absolute -inset-10 -z-10 bg-[var(--color-tertiary)]/15 blur-3xl rounded-full" />
+        </motion.div>
       </Container>
-     
     </section>
   );
 };

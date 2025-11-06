@@ -1,13 +1,31 @@
 import type { Metadata } from "next";
-import {Lato } from "next/font/google";
+import { Lato, Orbitron, Saira_Semi_Condensed } from "next/font/google";
 import "./globals.css";
 
-
 import Header from "@/components/Header";
+import Link from "next/link";
+import ThemeToggle from "@/components/BtnDarkMode";
+import Footer from "@/components/Footer";
 const lato = Lato({
   variable: "--font-lato",
   subsets: ["latin"],
   weight: ["100", "300", "400", "700", "900"], // Add desired weights here
+});
+const orbitrin = Orbitron({
+  variable: "--font-orbitron",
+
+  weight: ["400", "700", "900"], 
+
+  
+  // Add desired weights here
+});
+const sairaSemi = Saira_Semi_Condensed({
+  variable: "--font-sairaSemi",
+
+  weight: ["400", "700", "900"], 
+  subsets:['latin'],
+
+  // Add desired weights here
 });
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,16 +38,14 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
- 
-
   return (
-    <html lang="en" data-scroll-behavior="smooth" >
-      <body className={`${lato.variable} antialiased`}>
-       <Header />
-       <main>
-         {children}
-       </main>
+    <html lang="en" data-scroll-behavior="smooth" data-theme='dark' >
+      <body className={` ${orbitrin.variable} ${sairaSemi.variable} antialiased`}>
+        <Header />
+        <main>{children}</main>
+        <Footer/>
 
+    <ThemeToggle/>
       </body>
     </html>
   );

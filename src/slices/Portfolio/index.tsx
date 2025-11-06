@@ -4,77 +4,84 @@ import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import Container from "@/components/Container";
 import { PrismicNextImage } from "@prismicio/next";
 
-/**
- * Props for `Portfolio`.
- */
 export type PortfolioProps = SliceComponentProps<Content.PortfolioSlice>;
 
-/**
- * Component for "Portfolio" Slices.
- */
 const Portfolio: FC<PortfolioProps> = ({ slice }) => {
   const data = slice.primary;
+
   return (
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       id={data.section_id || ""}
-      className="bg-primary/95 pb-20 pt-header shadow shadow-amber-50"
+      className="relative py-24 bg-gradient-to-b from-primary via-secondary to-primary overflow-hidden"
     >
-      <Container className="text-center">
-        <h2 className="text-5xl font-bold mb-10 text-textPrimary">
-          {data.title}
-        </h2>
-        <div className="flex flex-wrap gap-8">
-          {!!data.projects_cards &&
-            data.projects_cards.map(
-              (item, idx) =>
-                (item.description ||
-                  item.project_image.url ||
-                  !!item.tools.length) && (
-                    <div
-                    key={idx}
-                    className="p-6 w-full sm:w-[48%] lg:w-[31%] bg-primary rounded-xl hover:scale-105 hover:shadow-[0px_1px_5px_2px_white] transition duration-300 ease-in-out flex flex-col"
-                    >
-                    <div className="w-full aspect-square rounded-lg overflow-hidden mb-4 bg-white/5 backdrop-blur-sm border-4 border-white/10 shadow-2xl shadow-black/30">
-                      <PrismicNextImage
-                      field={item.project_image}
-                      className="w-full h-full mx-auto mb-4"
-                      />
-                    </div>
+      {/* Soft glow background effects */}
+      <div className="absolute -top-24 -left-10 w-80 h-80 bg-tertiary/25 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute bottom-10 right-0 w-96 h-96 bg-tertiary/15 rounded-full blur-3xl animate-pulse" />
 
-                    <p className="text-textPrimary font-semibold line-clamp-4 text-start ">
+      <Container className="relative z-10 text-center">
+        {/* Title */}
+        <h2 className="text-4xl md:text-5xl font-extrabold mb-14 text-textPrimary tracking-tight">
+          {data.title || "Portfolio"}
+        </h2>
+
+        {/* Projects Grid */}
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+          {!!data.projects_cards &&
+            data.projects_cards.map((item, idx) => (
+              <div
+                key={idx}
+                className="group relative bg-tertiary/10 backdrop-blur-md border border-tertiary/30 rounded-2xl shadow-lg hover:shadow-tertiary/40 hover:-translate-y-2 transition-all duration-500 ease-out flex flex-col overflow-hidden"
+              >
+                {/* Image */}
+                {item.project_image?.url && (
+                  <div className="relative w-full aspect-[4/3] overflow-hidden">
+                    <PrismicNextImage
+                      field={item.project_image}
+                      className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110"
+                    />
+                    {/* Overlay */}
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  </div>
+                )}
+
+                {/* Content */}
+                <div className="p-6 text-left flex flex-col flex-grow">
+                  {item.description && (
+                    <p className="text-textPrimary/90 font-medium text-base md:text-lg leading-relaxed mb-4 line-clamp-4">
                       {item.description}
                     </p>
-                    <div>
-                      {!!item.tools.length && (
-                      <>
-                        <h3 className="text-textSecondary font-semibold mt-4 mb-2 text-start">
-                        Tools:
-                        </h3>
-                        <ul className="text-start flex flex-wrap gap-2 items-center">
+                  )}
+
+                  {!!item.tools?.length && (
+                    <div className="mt-auto">
+                      <h3 className="text-textSecondary font-semibold mb-3 text-sm uppercase tracking-wide">
+                        Tools Used
+                      </h3>
+                      <ul className="flex flex-wrap gap-2">
                         {item.tools.map((tool, index) => (
                           <li
-                          key={index}
-                          className="btn-gradient text-sm text-primary cursor-pointer py-1 px-2"
+                            key={index}
+                            className="bg-tertiary/20 text-textPrimary text-xs font-semibold py-1 px-3 rounded-full border border-tertiary/40 hover:bg-tertiary/30 transition-all duration-300"
                           >
-                          <PrismicRichText
-                            field={[tool]}
-                            components={{
-                            paragraph: ({ children }) => (
-                              <>{children}</>
-                            ),
-                            }}
-                          />
+                            <PrismicRichText
+                              field={[tool]}
+                              components={{
+                                paragraph: ({ children }) => <>{children}</>,
+                              }}
+                            />
                           </li>
                         ))}
-                        </ul>
-                      </>
-                      )}
+                      </ul>
                     </div>
-                    </div>
-                )
-            )}
+                  )}
+                </div>
+
+                {/* Hover Glow */}
+                <div className="absolute inset-0 rounded-2xl bg-tertiary/10 opacity-0 group-hover:opacity-100 blur-2xl transition duration-500 pointer-events-none" />
+              </div>
+            ))}
         </div>
       </Container>
     </section>
