@@ -60,6 +60,26 @@
             }
           }
         }
+      },
+      "info_me": {
+        "type": "Group",
+        "config": {
+          "label": "info_me",
+          "repeat": true,
+          "fields": {
+            "link_me": {
+              "type": "Link",
+              "config": {
+                "label": "link Me",
+                "placeholder": "",
+                "select": null,
+                "allowTargetBlank": true,
+                "allowText": true,
+                "repeat": false
+              }
+            }
+          }
+        }
       }
     }
   }

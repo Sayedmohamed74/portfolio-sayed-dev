@@ -132,6 +132,27 @@ export interface FooterDocumentDataQuickLinksItem {
 }
 
 /**
+ * Item in *Footer → info_me*
+ */
+export interface FooterDocumentDataInfoMeItem {
+  /**
+   * link Me field in *Footer → info_me*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.info_me[].link_me
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  link_me: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+}
+
+/**
  * Content for Footer documents
  */
 interface FooterDocumentData {
@@ -156,6 +177,17 @@ interface FooterDocumentData {
    * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
    */
   quick_links: prismic.GroupField<Simplify<FooterDocumentDataQuickLinksItem>>;
+
+  /**
+   * info_me field in *Footer*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.info_me[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  info_me: prismic.GroupField<Simplify<FooterDocumentDataInfoMeItem>>;
 }
 
 /**
@@ -567,6 +599,32 @@ export interface PortfolioSliceDefaultPrimaryProjectsCardsItem {
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
   tools: prismic.RichTextField;
+
+  /**
+   * title field in *Portfolio → Default → Primary → projects cards*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: portfolio.default.primary.projects_cards[].title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * web Link field in *Portfolio → Default → Primary → projects cards*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: web Link
+   * - **API ID Path**: portfolio.default.primary.projects_cards[].web_link
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  web_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
 }
 
 /**
@@ -856,6 +914,7 @@ declare module "@prismicio/client" {
       FooterDocumentData,
       FooterDocumentDataSocialLinksItem,
       FooterDocumentDataQuickLinksItem,
+      FooterDocumentDataInfoMeItem,
       HeaderDocument,
       HeaderDocumentData,
       PageDocument,

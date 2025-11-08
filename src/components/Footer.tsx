@@ -21,6 +21,15 @@ export default async function Footer() {
             Turning creative ideas into elegant, performant web experiences —
             clean, modern, and human-centered.
           </p>
+          <div className=" mt-1.5">
+            {data?.info_me?.map((link, i) => (
+              <PrismicNextLink
+                field={link.link_me}
+                key={`${(link.link_me.text || "") + i}`}
+                className="block text-[var(--color-textSecondary)]/90 leading-relaxed text-base"
+              />
+            ))}
+          </div>
         </div>
 
         {/* Quick Links */}
@@ -48,7 +57,7 @@ export default async function Footer() {
             Connect
           </h3>
           <div className="flex flex-wrap items-center gap-4">
-            {data?.social_links?.map((item,i) => (
+            {data?.social_links?.map((item, i) => (
               <PrismicNextLink
                 key={i}
                 field={item.media_link}

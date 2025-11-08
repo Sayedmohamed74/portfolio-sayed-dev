@@ -61,6 +61,26 @@
 										}
 									]
 								}
+							],
+							[
+								"title",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "yellow",
+									"type": "Text"
+								}
+							],
+							[
+								"web_link",
+								{
+									"__TYPE__": "LinkContent",
+									"key": "5c407290-a60b-446d-bde6-3395f7d3e2c3",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "https://prismic.io",
+										"text": "joy"
+									}
+								}
 							]
 						]
 					}

@@ -8,7 +8,6 @@ import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import Image from "./Image";
 import { motion } from "framer-motion";
 
-
 export type HeroProps = SliceComponentProps<Content.HeroSlice>;
 
 const Hero: FC<HeroProps> = ({ slice }) => {
@@ -46,7 +45,7 @@ const Hero: FC<HeroProps> = ({ slice }) => {
           </h2>
 
           {/* CTA Buttons */}
-         {/*  <div className="mt-10 flex max-lg:justify-center gap-4 flex-wrap">
+          {/*  <div className="mt-10 flex max-lg:justify-center gap-4 flex-wrap">
             {data.cta_text && (
               <PrismicNextLink field={data.cta_link} className="btn-gradient">
                 {data.cta_text}
@@ -82,6 +81,14 @@ const Hero: FC<HeroProps> = ({ slice }) => {
               </motion.li>
             ))}
           </ul>
+
+          <div className="mt-8 flex max-lg:justify-center">
+            <PrismicNextLink
+              field={data.cv_file}
+              className="inline-block px-6 py-3 rounded-xl font-semibold text-white bg-gradient-to-r from-[#00E5FF] to-[#3B82F6] hover:from-[#3B82F6] hover:to-[#00E5FF] shadow-lg shadow-[#00E5FF]/30 transition-all duration-500 ease-in-out text-center"
+              target="_blank"
+            />
+          </div>
         </motion.div>
 
         {/* === RIGHT IMAGE AREA === */}

@@ -2,7 +2,7 @@ import { FC } from "react";
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import Container from "@/components/Container";
-import { PrismicNextImage } from "@prismicio/next";
+import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 
 export type PortfolioProps = SliceComponentProps<Content.PortfolioSlice>;
 
@@ -47,9 +47,10 @@ const Portfolio: FC<PortfolioProps> = ({ slice }) => {
                 )}
 
                 {/* Content */}
+                <h4 className=" text-textPrimary pt-4 font-bold md:text-2xl">{item.title}</h4>
                 <div className="p-6 text-left flex flex-col flex-grow">
                   {item.description && (
-                    <p className="text-textPrimary/90 font-medium text-base md:text-lg leading-relaxed mb-4 h-32 md:h-40 lg:h-48 overflow-auto p-3 rounded-xl bg-primary">
+                    <p className="text-textPrimary/90 font-medium text-base md:text-lg leading-relaxed mb-4 max-h-32 md:max-h-40 lg:max-h-48 overflow-auto p-3 rounded-xl bg-primary">
                       {item.description}
                     </p>
                   )}
@@ -77,6 +78,8 @@ const Portfolio: FC<PortfolioProps> = ({ slice }) => {
                     </div>
                   )}
                 </div>
+
+                <PrismicNextLink field={item.web_link} className="mb-2.5"/>
 
                 {/* Hover Glow */}
                 <div className="absolute inset-0 rounded-2xl bg-tertiary/10 opacity-0 group-hover:opacity-100 blur-2xl transition duration-500 pointer-events-none" />
