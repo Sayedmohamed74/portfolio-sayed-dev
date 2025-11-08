@@ -2,8 +2,9 @@
 import { useState } from "react";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import Container from "./Container";
+import { HeaderDocumentData, Simplify } from "../../prismicio-types";
 
-const HeaderClient = ({ data }: { data: any }) => {
+const HeaderClient = ({ data }: { data: Simplify<HeaderDocumentData> }) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -19,7 +20,7 @@ const HeaderClient = ({ data }: { data: any }) => {
 
         {/* Desktop Navigation */}
         <ul className="hidden md:flex items-center space-x-10">
-          {data.buttons_nav.map((link: any) => (
+          {data.buttons_nav.map((link) => (
             <li
               key={link.key}
               className="relative group text-textSecondary hover:text-textPrimary transition-colors duration-300 text-base font-medium tracking-wide"
@@ -87,7 +88,7 @@ const HeaderClient = ({ data }: { data: any }) => {
         </button>
 
         <div className="mt-12 w-full">
-          {data.buttons_nav.map((link: any) => (
+          {data.buttons_nav.map((link) => (
             <PrismicNextLink
               key={link.key}
               field={link}

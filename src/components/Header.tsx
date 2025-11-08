@@ -1,6 +1,5 @@
 import { createClient } from "@/prismicio";
-import Container from "./Container";
-import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
+
 import HeaderClient from "./HeaderClient";
 
 const Header = async () => {

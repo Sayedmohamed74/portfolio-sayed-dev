@@ -3,14 +3,9 @@ import { Lato, Orbitron, Saira_Semi_Condensed } from "next/font/google";
 import "./globals.css";
 
 import Header from "@/components/Header";
-import Link from "next/link";
 import ThemeToggle from "@/components/BtnDarkMode";
 import Footer from "@/components/Footer";
-const lato = Lato({
-  variable: "--font-lato",
-  subsets: ["latin"],
-  weight: ["100", "300", "400", "700", "900"], // Add desired weights here
-});
+
 const orbitrin = Orbitron({
   variable: "--font-orbitron",
 

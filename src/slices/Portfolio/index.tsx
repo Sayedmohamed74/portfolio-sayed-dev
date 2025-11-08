@@ -49,7 +49,7 @@ const Portfolio: FC<PortfolioProps> = ({ slice }) => {
                 {/* Content */}
                 <div className="p-6 text-left flex flex-col flex-grow">
                   {item.description && (
-                    <p className="text-textPrimary/90 font-medium text-base md:text-lg leading-relaxed mb-4 line-clamp-4">
+                    <p className="text-textPrimary/90 font-medium text-base md:text-lg leading-relaxed mb-4 h-32 md:h-40 lg:h-48 overflow-auto p-3 rounded-xl bg-primary">
                       {item.description}
                     </p>
                   )}

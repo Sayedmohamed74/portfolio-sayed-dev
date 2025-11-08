@@ -8,6 +8,7 @@ import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import Image from "./Image";
 import { motion } from "framer-motion";
 
+
 export type HeroProps = SliceComponentProps<Content.HeroSlice>;
 
 const Hero: FC<HeroProps> = ({ slice }) => {
@@ -88,7 +89,7 @@ const Hero: FC<HeroProps> = ({ slice }) => {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1 }}
-          className="relative flex-1 max-w-md lg:max-w-lg xl:max-w-xl mx-auto"
+          className="relative w-full flex-1 max-w-md lg:max-w-lg xl:max-w-xl mx-auto"
         >
           <div className="relative rounded-[2rem] overflow-hidden shadow-[0_0_50px_rgba(0,229,255,0.2)] hover:shadow-[0_0_80px_rgba(0,229,255,0.35)] transition-all duration-700">
             <Image field={data.image_hero} />

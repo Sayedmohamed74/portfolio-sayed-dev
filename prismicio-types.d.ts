@@ -70,6 +70,111 @@ type ContentRelationshipFieldWithData<
 }[Exclude<TCustomType[number], string>["id"]];
 
 /**
+ * Item in *Footer → social Links*
+ */
+export interface FooterDocumentDataSocialLinksItem {
+  /**
+   * media Icon field in *Footer → social Links*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.social_links[].media_icon
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  media_icon: prismic.ImageField<never>;
+
+  /**
+   * media Link field in *Footer → social Links*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.social_links[].media_link
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  media_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+}
+
+/**
+ * Item in *Footer → quick Links*
+ */
+export interface FooterDocumentDataQuickLinksItem {
+  /**
+   * text field in *Footer → quick Links*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: text
+   * - **API ID Path**: footer.quick_links[].text
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  text: prismic.KeyTextField;
+
+  /**
+   * Quick Link field in *Footer → quick Links*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.quick_links[].quick_link
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  quick_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+}
+
+/**
+ * Content for Footer documents
+ */
+interface FooterDocumentData {
+  /**
+   * social Links field in *Footer*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.social_links[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  social_links: prismic.GroupField<Simplify<FooterDocumentDataSocialLinksItem>>;
+
+  /**
+   * quick Links field in *Footer*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.quick_links[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  quick_links: prismic.GroupField<Simplify<FooterDocumentDataQuickLinksItem>>;
+}
+
+/**
+ * Footer document from Prismic
+ *
+ * - **API ID**: `footer`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type FooterDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<FooterDocumentData>,
+    "footer",
+    Lang
+  >;
+
+/**
  * Content for Header documents
  */
 interface HeaderDocumentData {
@@ -115,6 +220,7 @@ export type HeaderDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | ContactSlice
   | PortfolioSlice
   | AboutSlice
   | SkillsSlice
@@ -179,7 +285,7 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
-export type AllDocumentTypes = HeaderDocument | PageDocument;
+export type AllDocumentTypes = FooterDocument | HeaderDocument | PageDocument;
 
 /**
  * Primary content in *About → Default → Primary*
@@ -262,6 +368,36 @@ type AboutSliceVariation = AboutSliceDefault;
  * - **Documentation**: https://prismic.io/docs/slices
  */
 export type AboutSlice = prismic.SharedSlice<"about", AboutSliceVariation>;
+
+/**
+ * Default variation for Contact Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ContactSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  never
+>;
+
+/**
+ * Slice variation for *Contact*
+ */
+type ContactSliceVariation = ContactSliceDefault;
+
+/**
+ * Contact Shared Slice
+ *
+ * - **API ID**: `contact`
+ * - **Description**: Contact
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ContactSlice = prismic.SharedSlice<
+  "contact",
+  ContactSliceVariation
+>;
 
 /**
  * Item in *Hero → Default → Primary → social links*
@@ -716,6 +852,10 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      FooterDocument,
+      FooterDocumentData,
+      FooterDocumentDataSocialLinksItem,
+      FooterDocumentDataQuickLinksItem,
       HeaderDocument,
       HeaderDocumentData,
       PageDocument,
@@ -726,6 +866,9 @@ declare module "@prismicio/client" {
       AboutSliceDefaultPrimary,
       AboutSliceVariation,
       AboutSliceDefault,
+      ContactSlice,
+      ContactSliceVariation,
+      ContactSliceDefault,
       HeroSlice,
       HeroSliceDefaultPrimarySocialLinksItem,
       HeroSliceDefaultPrimary,
